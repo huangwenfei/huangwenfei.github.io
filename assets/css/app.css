@@ -1468,17 +1468,17 @@ body.homepage {
       height: 80px;
       line-height: 80px; }
       .menu .menulogo .m-logo img {
-        margin-top: 10px;
-        height: 60px;
-        width: 60px; }
+        margin-top: 15px;
+        height: 50px;
+        width: 50px; }
     .menu .menulogo .m-logotext {
       float: left;
       position: relative;
       display: inline-block;
       text-align: center;
-      margin-left: 0.2em;
+      margin-left: 0.4em;
       width: auto;
-      margin-top: 10px;
+      margin-top: 15px;
       height: 80px;
       line-height: 80px;
       font-family: "Tangerine", cursive; }
@@ -1486,16 +1486,16 @@ body.homepage {
         list-style-type: none; }
         .menu .menulogo .m-logotext > ol > li {
           display: relative;
-          height: 20pt;
-          line-height: 20pt;
+          height: 18pt;
+          line-height: 18pt;
           width: auto;
           text-align: left; }
           .menu .menulogo .m-logotext > ol > li:first-child {
-            margin-top: 8px;
-            font-size: 20pt; }
+            margin-top: 5px;
+            font-size: 18pt; }
           .menu .menulogo .m-logotext > ol > li:last-child {
             margin-top: -4px;
-            font-size: 1em; }
+            font-size: 0.8em; }
   .menu #menunav {
     position: absolute;
     top: 0;
