@@ -1470,8 +1470,7 @@ body.homepage {
       .menu .menulogo .m-logo img {
         margin-top: 10px;
         height: 60px;
-        width: 60px;
-        border-radius: 50%; }
+        width: 60px; }
     .menu .menulogo .m-logotext {
       float: left;
       position: relative;
