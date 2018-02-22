@@ -7,7 +7,8 @@
 		narrow: '(max-width: 960px)',
 		narrower: '(max-width: 840px)',
 		mobile: '(max-width: 736px)',
-	  mobile_small: '(max-width: 414px)'
+		mobile_small: '(max-width: 414px)',
+	  mobile_smaller: '(max-width: 320px)'
 	});
 
 	$(function() {
@@ -30,11 +31,14 @@
 			$('form').placeholder();
 
 		// Prioritize "important" elements on mobile.
-			skel.on('+mobile -mobile +mobile_small -mobile_small', function() {
+			skel.on('+mobile -mobile +mobile_small -mobile_small +mobile_smaller -mobile_smaller', function() {
 				$.prioritize(
 					'.important\\28 mobile\\29',
-					skel.breakpoint('mobile').active
-					skel.breakpoint('mobile_small').active
+					skel.breakpoint('mobile').active,
+					'.important\\28 mobile_small\\29',
+					skel.breakpoint('mobile_small').active,
+					'.important\\28 mobile_smaller\\29',
+					skel.breakpoint('mobile_smaller').active
 				);
 			});
 

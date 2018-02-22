@@ -182,17 +182,27 @@ $(function() {
 
   function delay(func, mils) { setTimeout(func, mils); }
 
-  tocMenu();
-  tocWheel();
-  fixToc();
-  fixWheel();
-
-  $(window).scroll(function() {
-
+  skel.on("+mobile +narrower +narrow", function() {
+    // nothing
+  }).on("-narrow", function() {
     tocMenu();
     tocWheel();
     fixToc();
     fixWheel();
+  });
+
+
+
+  $(window).scroll(function() {
+
+    skel.on("+mobile +narrower +narrow", function() {
+      // nothing
+    }).on("-narrow", function() {
+      tocMenu();
+      tocWheel();
+      fixToc();
+      fixWheel();
+    });
 
 	});
 
