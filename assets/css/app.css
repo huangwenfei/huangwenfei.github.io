@@ -1765,7 +1765,7 @@ section, article {
     font-size: 1.3em;
     font-style: normal;
     font-weight: 500;
-    border-radius: 20px;
+    border-radius: 0;
     color: #F4F1F9;
     background-color: #eb1579; }
     .post-actions .post-button input[type="button"]:hover,
@@ -1784,7 +1784,7 @@ section, article {
     font-size: 1em;
     font-style: normal;
     font-weight: 500;
-    border-radius: 15px;
+    border-radius: 0;
     color: #F4F1F9;
     background-color: #eb1579; }
     .post-actions .post-button input[type="button"]:hover,
@@ -1802,7 +1802,7 @@ section, article {
     font-size: 1em;
     font-style: normal;
     font-weight: 500;
-    border-radius: 15px;
+    border-radius: 0;
     color: #F4F1F9;
     background-color: #747175; }
     .post-actions .post-button input[type="button"]:hover,
@@ -2470,7 +2470,6 @@ section, article {
       .post-lists .post-actions .post-button.continue_reading, .post-lists .post-actions .post-button.comments {
         display: inline-block;
         width: 100%;
-        border-radius: 20px;
         padding-top: 0.5em;
         padding-bottom: 0.5em; }
 
@@ -2486,10 +2485,19 @@ section, article {
     margin-right: 20px; }
   #top main .post-actions {
     padding: 0 20px 0 20px; }
+    #top main .post-actions li {
+      display: inline-block;
+      font-size: 15pt;
+      text-align: center;
+      width: 100%; }
+      #top main .post-actions li:first-child {
+        margin-bottom: 1em; }
     #top main .post-actions .post-button .top_continue_reading {
       display: inline-block;
       width: 100%;
-      font-size: 15pt; }
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      background-color: yellow; }
 
   .posts {
     margin-top: 50px;

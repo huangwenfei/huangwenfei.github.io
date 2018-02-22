@@ -6,7 +6,8 @@
 		normal: '(max-width: 1280px)',
 		narrow: '(max-width: 960px)',
 		narrower: '(max-width: 840px)',
-		mobile: '(max-width: 736px)'
+		mobile: '(max-width: 736px)',
+	  mobile_small: '(max-width: 414px)'
 	});
 
 	$(function() {
@@ -29,10 +30,11 @@
 			$('form').placeholder();
 
 		// Prioritize "important" elements on mobile.
-			skel.on('+mobile -mobile', function() {
+			skel.on('+mobile -mobile +mobile_small -mobile_small', function() {
 				$.prioritize(
 					'.important\\28 mobile\\29',
 					skel.breakpoint('mobile').active
+					skel.breakpoint('mobile_small').active
 				);
 			});
 
