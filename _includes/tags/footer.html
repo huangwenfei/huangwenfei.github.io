@@ -1,0 +1,195 @@
+<footer>
+
+  <script>
+
+    var tag_list = [
+
+      {% for tag in site.tags %}
+        {
+          text: "{{ tag[0] }}",
+          weight: 1,
+          html: { "class": "tag" },
+          link: '#{{ tag[0] }}',
+        },
+      {% endfor %}
+
+    ];
+
+    function tagWeightRandom(minValue, maxValue) {
+      // 乘 100 是为了增加混乱度
+      var weight = Math.random() * 100 * 0.618;
+      weight %= maxValue;
+      if (weight < minValue) { weight = tagWeightRandom(minValue, maxValue); }
+      // if (weight > maxValue) { weight = maxValue; }
+      return weight;
+    }
+
+    // 黄金比例 (lenght : vertical) = 1 : 0.618;
+    function tagVerticalRandom(length, weight) {
+      var goldenRatio = (length * 0.618),
+          goldenRatioOffset = (parseFloat(goldenRatio) - Math.floor(goldenRatio));
+          rangeMin = parseFloat(goldenRatio) - parseFloat(goldenRatioOffset),
+          rangeMax = parseFloat(goldenRatio) + parseFloat(goldenRatioOffset);
+      // console.log("Max:" + rangeMax + ";" + "Min:" + rangeMin);
+      var isVer = ( (weight < rangeMax && weight > rangeMin) ? true : false );
+      return isVer;
+    }
+
+    function recreateTagList() {
+
+      var minValue = 1,
+          maxValue = 14,
+          length = maxValue;
+
+      for (tagIdx in tag_list) {
+
+        var tagDict = tag_list[tagIdx];
+
+        tagDict.weight = tagWeightRandom(minValue, maxValue);
+        // tagDict.html = tagVerticalRandom(length, tagDict.weight) ? {"class": "vertical tag"} : {"class": "tag"};
+        // console.log(tag_list[tag]);
+      }
+
+    }
+
+
+    // console.log(tag_list);
+
+    function clearTagCloud() {
+      $("#tag_cloud").empty();
+    }
+
+    function createTagCloudConfig() {
+      recreateTagList();
+    }
+
+    function drawTagCloud() {
+
+      $("#tag_cloud").jQCloud(tag_list,
+        {
+          shape: "rectangular",
+          delayedMode: false,
+          afterCloudRender: function() {
+            // $('.tag').click(function() {
+            //   var $id = this.innerText;
+            //   console.log($id+" "+"CLICK:"+" ");
+            // }),
+            // console.log($("#tag_cloud").html()),
+          },
+      });
+
+    }
+
+    function drawTagCloudDone() {
+      setTimeout($('#tag_cloud_loader').css('display', 'none'), 3000);
+    };
+
+    // For mobile
+
+    function createTagList() {
+      $(
+        '  <div id="tag-list">'+
+        '    <ul>'+
+        '      {% for tag in site.tags %}'+
+        '        <li>'+
+        '          <a id="link_{{ tag[0] }}" class="link" href="{{ "#" | append: tag[0] }}">'+
+        '            {{ tag[0] }}'+
+        '          </a>'+
+        '        </li>'+
+        '      {% endfor %}'+
+        '    </ul>'+
+        '  </div>'
+      ).appendTo($(".tag-container"));
+      // console.log($(".tag-container"));
+      // console.log($(".tag-container").innerHtml);
+    }
+
+    function setTagList() {
+
+      var linkIds = [];
+      {% for tag in site.tags %}
+        linkIds.push("#link_{{ tag[0] }}");
+      {% endfor %}
+      // console.log(linkIds);
+
+      for (idIdx in linkIds) {
+        var id = linkIds[idIdx];
+        var bgColor = getColor();
+            // textColor = $(this).colorDarken(bgColor, 0.4);
+        // console.log(color);
+        $(id).css({
+          // color: textColor,
+          backgroundColor: bgColor,
+        });
+      }
+
+      function getColor() {
+        var colors = ["#C169FF", "#FFE985", "#E87254", "#54C0E8", "#85FF75",
+                      "#E84F60", "#5481E8", "#3FFFDB", "#FF75AF", "#E9D0FF"];
+        var cIdx = Math.random() * 500 * 0.618;
+        cIdx %= (colors.length + 1);
+        // console.log(cIdx);
+        return colors[Math.floor(cIdx)];
+      }
+
+    }
+
+  </script>
+  <script type="text/javascript">
+
+    $(function () {
+
+      createTagList();
+      createTagCloudConfig();
+
+      $('#tag_cloud_loader').css('display', 'none');
+
+      // 第一次创建
+      var normalState = "/wide/normal";
+          wideState = "/wide";
+
+      var currentState = skel.stateId;
+      // console.log(currentState);
+
+      var isNormalOrWideState = (currentState === normalState || currentState === wideState);
+      if (isNormalOrWideState) {
+        // console.log("n-w");
+        drawTagCloud();
+      } else {
+        // console.log("m-nr-n");
+        setTagList();
+      }
+
+      // State 状态改变
+
+      skel.on("+mobile +narrower +narrow", function() {
+        setTagList();
+      }).on("-narrow -normal -wide", function() {
+        clearTagCloud();
+        drawTagCloud();
+      });
+
+      // skel.on('resize', function() { skel.poll(); });
+
+      // 窗口尺寸改变
+      // $(window).resize(function () {          //当浏览器大小变化时
+      //   // alert($(window).height());          //浏览器时下窗口可视区域高度
+      //   // alert($(document).height());        //浏览器时下窗口文档的高度
+      //   // alert($(document.body).height());   //浏览器时下窗口文档body的高度
+      //   // alert($(document.body).outerHeight(true)); //浏览器时下窗口文档body的总高度 包括border padding margin
+      //   console.log("resize");
+      //
+      // });
+
+    });
+  </script>
+  <!-- <script type="text/javascript">
+    // color test
+    $(function() {
+      console.log($(this).ColorFormat("#eee"));
+      console.log($(this).HEXToRGB("#6943a0"));
+      console.log($(this).RGBToHEX("rgb(162, 103, 242)"));
+      console.log($(this).colorDarken("rgb(162, 103, 242)", 0.4));
+    });
+  </script> -->
+</footer>

@@ -1,0 +1,15 @@
+---
+layout: main
+---
+
+<div class="posts">
+
+  <!-- 置顶文章 -->
+  {% include public/post_top.html %}
+
+  <!-- All posts -->
+
+  {% assign target = paginator %}
+  {% include public/post_list.html %}
+
+</div>

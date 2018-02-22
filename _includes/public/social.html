@@ -1,0 +1,13 @@
+<div class="social-contact">
+  {% if site.social-contact.size > 0 %}
+  <ul>
+      {% for s in site.social-contact %}
+      <li>
+          <a href="{{ s[1] }}" target="_blank">
+              <i class="iconfont icon-{{ s[0] }}"></i>
+          </a>
+      </li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+</div>

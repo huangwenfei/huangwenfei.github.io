@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn" data-scribe-reduced-action-queue="true">
+
+  {% include tags/head.html %}
+  {% include analytics/analytics.html %}
+
+  <body class="homepage">
+
+    <div id="homewrapper">
+
+      <div class="bg-img" style="background-image: url('{{ "assets/images/tags/bg.png"| relative_url }}'); background-size: cover;"></div>
+
+      {% include public/header.html %}
+
+      <main class="main-tags">
+        {{ content }}
+      </main>
+
+      {% include tags/footer.html %}
+
+    </div>
+
+    {% include public/footer.html %}
+
+  </body>
+
+</html>

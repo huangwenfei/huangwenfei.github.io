@@ -1,0 +1,24 @@
+
+<header class="title-header">
+  <div class="post-h-container">
+    <div class="title">
+      <h2>{{ page.title }}</h2>
+      {% if page.subtitle %}
+        <h3>{{ page.subtitle }}</h3>
+      {% endif %}
+    </div>
+    <div class="author-date">
+      <span><i class="iconfont icon-author"></i><span class="author">{% if page.author %} {{ page.author }} {% else %} {{ site.author }} {% endif %}</span></span>
+      <span><i class="iconfont icon-time"></i><span class="date">{{ page.date | date_to_long_string }}</span></span>
+    </div>
+    <div class="post-tags">
+      {% if page.tags.size > 0 %}
+        {% for tag in page.tags %}
+          {% assign tagIdx = site.nav-links.size | minus: 1 %}
+          {% assign tagUrl = site.nav-links[tagIdx].url %}
+          <a class="post-tag" href="{{ "/#" | append: tag | prepend: tagUrl | relative_url | replace: "//", "/" }}">{{ tag }}</a>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</header>

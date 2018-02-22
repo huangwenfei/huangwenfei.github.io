@@ -1,0 +1,41 @@
+
+  {% for post in site.posts %}
+
+    {% if post.is_top %}
+      {% assign topPost = post %}
+      {% break %}
+    {% endif %}
+
+  {% endfor %}
+
+  {% include comment_systems/comments_ids.html %}
+  {% include public/post_ids.html %}
+
+  {% if topPost %}
+
+  {% assign post_reading_url = topPost.url | relative_url %}
+  {% assign post_comment_url = post_reading_url | append: post_comment_id %}
+
+  <div class="top-post">
+
+    <article id="top">
+      <!-- <a href="{{ post_reading_url }}" class="image featured"><img src="{{ topPost.top_cover | relative_url }}" alt="置顶文章配图" /></a> -->
+      <div class="cover" style="background: url('{{ topPost.top_cover | relative_url }}') center no-repeat; background-size: cover;">
+        <a href="{{ post_reading_url }}" ></a>
+      </div>
+      <header>
+        <h2><a href="{{ post_reading_url }}">{{ topPost.title }}</a></h2>
+        <h3 class="date">{{ topPost.date | date_to_long_string }}</h3>
+        <p class="descriptions">{{ topPost.top_descriptions | strip_html | strip_newLines | truncate: 100 }}</p>
+      </header>
+      <main>
+        <a class="post-content-link" href="{{ post_reading_url | append: post_content_id }}">
+          <p class="contents">{{ topPost.content | strip_html | strip_newLines | truncate: 250 }}</p>
+        </a>
+        {% include public/post_actions.html %}
+      </main>
+    </article>
+
+  </div>
+
+  {%  endif %}

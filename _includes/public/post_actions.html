@@ -1,0 +1,32 @@
+
+<!-- isTopPost from _includes/public/post_list/post_top.html -->
+<!-- post_reading_url from _includes/public/post_list/post_top.html -->
+<!-- post_comment_url from _includes/public/post_list/post_top.html -->
+
+<footer>
+  <ul class="post-actions">
+
+    {% if isTopPost %}
+      <li>
+        <a href={{ post_reading_url }} class="post-button top_continue_reading">
+          <span class="iconfont icon-wenjian"></span> <span>继续阅读</span>
+        </a>
+      </li>
+    {% else %}
+      <li>
+        <a href={{ post_reading_url }} class="post-button continue_reading">
+          <span class="iconfont icon-wenjian"></span> <span>继续阅读</span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% if site.disqus %}
+      <li>
+        <a href={{ post_comment_url }} class="post-button comments">
+          <span class="iconfont icon-huihua"></span> <span>评论</span> <span class="count disqus-comment-count" data-disqus-identifier="{{ page.id }}"></span>
+        </a>
+      </li>
+    {% endif %}
+
+  </ul>
+</footer>

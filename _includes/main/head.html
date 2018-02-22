@@ -1,0 +1,8 @@
+<head>
+  {% include public/head.html %}
+  {% if site.disqus %}
+    <script id="dsq-count-scr" src="//{{ site.disqus_shortName }}.disqus.com/count.js" async></script>
+    <!-- 自动更新 Comments Count -->
+    <script type="text/javascript"> DISQUSWIDGETS.getCount({reset: true}); </script> 
+  {% endif %}
+</head>

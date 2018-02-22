@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn" data-scribe-reduced-action-queue="true">
+
+  {% include post/head.html %}
+  <script src="{{ "assets/js/collection_post.js" | relative_url }}"></script>
+
+  {% include analytics/analytics.html %}
+
+  <body class="homepage">
+
+    <div id="homewrapper">
+
+      <header class="collected-post-header">
+        {% include public/header.html %}
+        <div class="content"> {{ content }} </div>
+        <div class="filter"></div>
+        <div class="post-cover" style="background: url('{{ "assets/images/post/post-collected-header.png" | relative_url }}') center no-repeat; background-size: cover;"></div>
+      </header>
+
+      <main>
+
+        <div class="posts">
+          <!-- Multi Paginate Posts -->
+          {% assign githubPageOff = false %}
+          {% if githubPageOff %}
+            {% assign target = page.pagination %}
+          {% else %}
+            {% assign target = GithubPage %}
+            <!-- {% assign path_eles = page.path | split: '/' %}
+            {% assign idx = path_eles.size | minus: 2 %}
+            {% assign collectionTag = path_eles[idx] %} -->
+            {% assign collectionTag = page.vfpage_collection_tags %}
+            {% assign collection_posts = site.tags | map: collectionTag | compact %}
+          {% endif %}
+          {% include public/post_list.html %}
+        </div>
+
+        <!-- Multi Paginate Paginator -->
+        <script type="text/javascript">
+          collectionPost.options = {
+            pageRows : parseInt({{ page.vfpage_paginate | divided_by: 2.0 | ceil }}),
+            pageItems: {{ page.vfpage_paginate }},
+            pageCount: Math.ceil((parseFloat({{ collection_posts.size }}) / parseFloat({{ page.vfpage_paginate }}))),
+            rowsCount: parseInt({{ collection_posts.size | divided_by: 2.0 | ceil }}),
+          };
+          (function()  { collectionPost.createRowIds(); })(); // 立即执行
+          $(function() { collectionPost.buildPagination(); });
+        </script>
+
+      </main>
+
+    </div>
+
+      {% include public/footer.html %}
+
+  </body>
+
+</html>

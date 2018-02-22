@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn" data-scribe-reduced-action-queue="true">
+
+  {% assign offScrolltop = true %}
+  {% assign offMenu = true %}
+  {% include main/head.html %}
+  {% include analytics/analytics.html %}
+
+  <body class="homepage404" style="background-image: url('{{ "assets/images/404/bg.png"| relative_url }}'); background-size: cover;">
+
+    <div id="homewrapper">
+
+      {% include public/header.html %}
+
+      <main class="main-404">
+        {{ content }}
+      </main>
+
+      {% include 404/footer.html %}
+
+    </div>
+
+  </body>
+
+</html>

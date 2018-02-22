@@ -1,0 +1,114 @@
+
+<div class="post-lists">
+  <!-- 遍历分页后的文章 -->
+
+  <header id="post-header"> </header>
+
+  <main>
+
+    <!-- 开始创建 Row -->
+
+    {% include comment_systems/comments_ids.html %}
+    {% include public/post_ids.html %}
+
+    {% if target == paginator %}
+      {% assign posts = target.posts %}
+    {% else %}
+      {% assign posts = target.page_posts %}
+    {% endif %}
+
+    <!-- 与上面的 if 条件连写的时候 if-else 根本没用，只能分开写了 -->
+    {% if target == GithubPage %}
+      {% assign posts = collection_posts %}
+    {% endif %}
+
+    {% assign size = posts.size %}
+    {% assign count = size | divided_by: 2.0 | ceil | minus: 1  %}
+
+    {% for index in (0..count) %}
+
+      <div class="row">
+
+        <!-- LEFT ROW -->
+        {% assign lindex = index | times: 2 %}
+
+        {% assign postL = posts[lindex] %}
+
+        {% assign post_reading_url = postL.url | relative_url %}
+        {% assign post_comment_url = post_reading_url | append: post_comment_id %}
+
+        <div class="6u 12u(narrow) 12u(narrower) 12u(mobile)">
+          <section class="box">
+            <!-- <a href="{{ post_reading_url }}" class="image featured">
+              <img src="{{ postL.box_cover | relative_url }}" alt=" {{ postL.title }} | append "文章配图" " />
+            </a> -->
+            <div class="cover" style="background: url('{{ postL.box_cover | relative_url }}') center no-repeat; background-size: cover;">
+              <a href="{{ post_reading_url }}" ></a>
+            </div>
+            <header>
+              <h3><a href="{{ post_reading_url }}">{{ postL.title }}</a></h3>
+              <p class="author">
+                <span class="date">{{ postL.date | date_to_long_string }}</span>
+              </p>
+            </header>
+            <div class="content">
+              <a class="post-content-link" href="{{ post_reading_url | append: post_content_id }}">
+                <p>{{ postL.content | strip_html | strip_newLines | truncate: 200 }}</p>
+              </a>
+              {% include public/post_actions.html %}
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT ROW -->
+        {% assign rindex = index | times: 2 | plus: 1 %}
+
+        {% unless rindex == size %}
+
+          {% assign postR = posts[rindex] %}
+
+          {% assign post_reading_url = postR.url | relative_url %}
+          {% assign post_comment_url = post_reading_url | append: post_comment_id %}
+
+          <div class="6u 12u(narrow) 12u(narrower) 12u(mobile)">
+            <section class="box">
+              <!-- <a href="{{ post_reading_url }}" class="image featured">
+                <img src="{{ postR.box_cover | relative_url }}" alt=" {{ postR.title }} | append "文章配图" " />
+              </a> -->
+              <div class="cover" style="background: url('{{ postR.box_cover | relative_url }}') center no-repeat; background-size: cover;">
+                <a href="{{ post_reading_url }}" ></a>
+              </div>
+              <header>
+                <h3><a href="{{ post_reading_url }}">{{ postR.title }}</a></h3>
+                <p class="author">
+                  <span class="date">{{ postR.date | date_to_long_string }}</span>
+                </p>
+              </header>
+              <div class="content">
+                <a class="post-content-link" href="{{ post_reading_url | append: post_content_id }}">
+                  <p>{{ postR.content | strip_html | strip_newLines | truncate: 200 }}</p>
+                </a>
+                {% include public/post_actions.html %}
+              </div>
+            </section>
+          </div>
+        </div>
+
+      {% endunless %}
+
+    {% endfor %}
+  </main>
+
+  <footer id="post-pagination">
+    <!-- 分页链接 -->
+    {% if target == paginator %}
+      {% include public/pagination.html %}
+    {% else %} <!-- page.pagination -->
+      {% include public/pagination_site.html %}
+    {% endif %}
+    {% if target == GithubPage %}
+      {% assign posts = collection_posts %}
+    {% endif %}
+  </footer>
+
+</div>

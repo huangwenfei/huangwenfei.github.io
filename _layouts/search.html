@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn" data-scribe-reduced-action-queue="true">
+
+  {% include search/head.html %}
+  {% include analytics/analytics.html %}
+
+  <body class="homepage">
+
+    <div id="homewrapper">
+
+      <header class="search-header">
+        {% include public/header.html %}
+        <div class="search-header-title">
+          <h2>{{ page.title }}</h2>
+          <p>{{ page.subtitle }}</p>
+        </div>
+        {% if page.cover %}
+          <div class="filter"></div>
+          <div class="cover" style="background: url('{{ page.cover | relative_url }}') center no-repeat; background-size: cover;">
+        {% endif %}
+      </header>
+
+      <main> {{ content }} </main>
+
+      {% include public/footer.html %}
+
+    </div>
+
+  </body>
+
+</html>

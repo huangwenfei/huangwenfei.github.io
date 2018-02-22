@@ -1,0 +1,107 @@
+
+{% if site.disqus %}
+  <!-- For disqus & disqus-php -->
+  <div id="disqus_thread" class="comments_sys"></div>
+  <!-- For disqus-php -->
+  <link rel="stylesheet" href="{{ "assets/thirdparts/disqus-php/dist/iDisqus.min.css" | relative_url }}">
+  <script src="{{ "assets/thirdparts/disqus-php/dist/iDisqus.min.js" | relative_url }}"></script>
+  <!-- <?php
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST");
+    header("Access-Control-Allow-Headers: Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With");
+  ?> -->
+{% endif %}
+
+{% if site.livere %}
+  <div id="lv-container" class="comments_sys" data-id="city" data-uid="{{ site.livere_uid }}">
+{% endif %}
+
+<script type="text/javascript">
+
+  // $(function() {
+  //
+  //   var disqusCanThread = function(_url, fun) {
+  //     console.log("disqusCanThread");
+  //     $.ajax({
+  //         url:_url,
+  //         type:"GET",
+  //         //说明请求的url存在，并且可以访问
+  //         success: function(){ if($.isFunction(fun)){ fun(true); } console.log("true"); },
+  //         statusCode: {
+  //           //说明请求的url不存在
+  //           404:function(){ if($.isFunction(fun)){ fun(false); } console.log("false"); }
+  //         }
+  //       });
+  //   };
+  //
+  //   {% if site.disqus %}
+  //     disqusCanThread('https://disqus.com', function(canLoad) {
+  //       if (canLoad) {
+  //         $('._disqus').attr("id", "disqus_thread");
+  //         var disqus_config = function () {
+  //           this.page.url = '{{ page.url | relative_url }}';  // Replace PAGE_URL with your page's canonical URL variable
+  //           this.page.identifier = "{{ page.id }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  //         };
+  //         (function() { // DON'T EDIT BELOW THIS LINE
+  //           var d = document, s = d.createElement('script');
+  //           s.src = 'https://{{ site.disqus_shortName }}.disqus.com/embed.js';
+  //           s.setAttribute('data-timestamp', +new Date());
+  //           (d.head || d.body).appendChild(s);
+  //         })();
+  //       } else {
+  //         $('._disqus').attr("id", "disqus_php_thread");
+  //         var disq = new iDisqus('comment', {
+  //           forum: '{{ site.disqus_shortName }}',
+  //           api: '{{ "assets/thirdparts/disqus-php/api" | relative_url }}',
+  //           site: '{{ site.url }}',
+  //           mode: 2,
+  //           timeout: 3000,
+  //           init: true
+  //         });
+  //       }
+  //     });
+  //   {% endif %}
+  //
+  // });
+
+  {% if site.disqus %}
+    var disq = new iDisqus('disqus_thread', {
+      forum: '{{ site.disqus_shortName }}',
+      api: '{{ "assets/thirdparts/disqus-php/api" | relative_url }}',
+      site: '{{ site.url }}',
+      mode: 2,
+      timeout: 3000,
+      init: true,
+      link: '{{ page.url | relative_url }}',
+      identifier: "{{ page.url | relative_url }}",
+    });
+  {% endif %}
+
+  // {% if site.disqus %}
+  //   var disqus_config = function () {
+  //     this.page.url = '{{ page.url | relative_url }}';  // Replace PAGE_URL with your page's canonical URL variable
+  //     this.page.identifier = "{{ page.url | relative_url }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  //   };
+  //   (function() { // DON'T EDIT BELOW THIS LINE
+  //     var d = document, s = d.createElement('script');
+  //     s.src = 'https://{{ site.disqus_shortName }}.disqus.com/embed.js';
+  //     s.setAttribute('data-timestamp', +new Date());
+  //     (d.head || d.body).appendChild(s);
+  //   })();
+  // {% endif %}
+
+  {% if site.livere %}
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+
+        if (typeof LivereTower === 'function') { return; }
+
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  {% endif %}
+
+</script>

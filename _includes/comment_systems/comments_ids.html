@@ -1,0 +1,12 @@
+
+{% assign post_comment_id = "#" %}
+
+{% if site.disqus %}
+  <!-- form _includes/comment_systems/disqus.html -->
+  {% assign post_comment_id = "#disqus_thread" %}
+{% endif %}
+
+{% if site.levere %}
+  <!-- form _includes/comment_systems/levere.html -->
+  {% assign post_comment_id = "#lv-container" %}
+{% endif %}

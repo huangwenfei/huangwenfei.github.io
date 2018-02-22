@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn" data-scribe-reduced-action-queue="true">
+
+  {% include post/head.html %}
+  {% include analytics/analytics.html %}
+
+  <body class="homepage">
+
+    <div id="homewrapper">
+
+      <header class="post-header">
+        {% include post/header.html %}
+        {% include public/header.html %}
+        {% if page.cover %}
+          <div class="filter"></div>
+          <div class="post-cover" style="background: url('{{ page.cover | relative_url }}') center no-repeat; background-size: cover;">
+        {% endif %}
+      </header>
+
+      <main>
+        <div id="article-content-space"></div>
+        <div class="post-content">
+          <article id="article-content" class="content">
+            <!-- <div id="tocNav" class="toc-menu">
+              <h1>目 录</h1>
+              {{ content | toc_only }}
+            </div> -->
+            <div id="tocNav" class="toc-menu">
+              <div id="toc-content">
+                <h1>目 录</h1>
+              </div>
+              <div class="h-slideBar"><span class="h-space"></span></div>
+            </div>
+            <div class="markdown-body">
+              {{ content }}
+            </div>
+          </article>
+          {% if site.social-share %}
+            <section class="social-share">
+
+            </section>
+          {% endif %}
+
+          <div id="post-footer">
+            {% include post/footer.html %}
+            {% include comment_systems/comments.html %}
+          </div>
+        </div>
+      </main>
+
+      {% include public/footer.html %}
+
+    </div>
+
+  </body>
+
+</html>

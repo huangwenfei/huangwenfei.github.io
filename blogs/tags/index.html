@@ -1,0 +1,30 @@
+---
+layout: tags
+---
+
+<div class="tag-container">
+  <div id="tag_cloud" style="width: 100%; height: 100%;"></div>
+  <div id="tag_cloud_loader" class="loader loader-double is-active"></div>
+</div>
+<div id="tag-posts">
+  {% for tag in site.tags %}
+    <section id="{{ tag[0] }}" class="section-title">
+      <span class="space"></span>
+      <h1>{{ tag[0] }}</h1>
+    </section>
+    <section class="section-content">
+
+      <ul class="single">
+        {% for post in tag[1] %}
+          <li class="cell">
+            <a class="link" href="{{ post.url | relative_url }}">
+              <h2>{{ post.title }}</h2>
+              <p>{{ post.content | strip_html | strip_newlines | truncate: 200 }}</p>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
+    </section>
+  {% endfor %}
+</div>

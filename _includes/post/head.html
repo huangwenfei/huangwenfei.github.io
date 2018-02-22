@@ -1,0 +1,17 @@
+<head>
+
+  <link rel="stylesheet" href="{{ "/assets/thirdparts/githubmarkdown/github-markdown.css" | relative_url }}">
+
+  <!-- <link rel="stylesheet" href={{ "assets/thirdparts/highlight/styles/atom-one-dark.css" | relative_url }}>
+  <script src={{ "assets/thirdparts/highlight/highlight.js" | relative_url }}></script> -->
+  <!-- TODO:    highlight.js 直接引入文件失败了 -->
+  <!-- FIXME:  用  CDN 就可以使用 -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- <link rel="stylesheet" href="/assets/css/share.min.css"> -->
+
+  <!-- app.css 里面的内容 可能会重写上面的 *css 的个别内容，放在最后面比较保险 -->
+  {% include public/head.html %}
+
+</head>

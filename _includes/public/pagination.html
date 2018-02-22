@@ -1,0 +1,60 @@
+<!-- 分页链接 -->
+
+<!-- paginator from post_list,html -->
+
+{% if paginator.total_pages > 1 %}
+
+  <div class="pagination">
+
+    <ol class="page-links">
+      <!-- 首页 -->
+      <li class="num-start-end">
+        <a class="page-link" href="{{ "/" | relative_url }}" data-hover="首页">首页</a>
+      </li>
+
+      <!-- << -->
+      <li class="page-previous-next">
+        {% if paginator.previous_page %}
+          <a class="page-link" href="{{ paginator.previous_page_path | relative_url | replace: '//', '/' }}" data-hover="icon-previous-page"><i class="iconfont icon-previous-page"></i></a>
+        {% else %}
+          <span class="normal" data-hover="icon-previous-page"><i class="iconfont icon-previous-page"></i></span>
+        {% endif %}
+      </li>
+      <!-- page:num -->
+      <li class="page-center">
+        {% for page in (1..paginator.total_pages) %}
+          {% if page == paginator.page %}
+            <span class="current">{{ page }}</span>
+          {% elsif page == 1 %}
+            <a class="page-link" href="{{ "/" | relative_url | replace: '//', '/' }}" data-hover="{{page}}">{{ page }}</a>
+          {% else %}
+            <a class="page-link" href="{{ site.paginate_path | relative_url | replace: '//', '/' | replace: ':num', page }}" data-hover="{{page}}">{{ page }}</a>
+          {% endif %}
+        {% endfor %}
+      </li>
+      <!-- >> -->
+      <li class="page-previous-next">
+        {% if paginator.next_page %}
+          <a class="page-link" href="{{ paginator.next_page_path | relative_url | replace: '//', '/' }}" data-hover="icon-next-page"><i class="iconfont icon-next-page"></i></a>
+        {% else %}
+          <span class="normal" data-hover="icon-next-page"><i class="iconfont icon-next-page"></i></span>
+        {% endif %}
+      </li>
+
+
+      <!-- 末页 -->
+      <li class="num-start-end">
+        <a class="page-link" href="{{ site.paginate_path | relative_url | replace: ':num', paginator.total_pages }}" data-hover="末页">末页</a>
+      </li>
+
+      <li class="page-total">
+        第 <span class="page-number">{{paginator.page}}</span> 页
+          <span class="page-number">/</span>
+        共 <span class="page-number">{{paginator.total_pages}}</span> 页
+      </li>
+
+    </ol>
+
+  </div>
+
+{% endif %}

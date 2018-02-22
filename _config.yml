@@ -1,0 +1,118 @@
+
+title: 半纸渊
+menulogo: assets/images/mainheader/logo.png
+menulogotext-max: 半纸渊
+menulogotext-min: Windy
+description: >- # this means to ignore newlines until "baseurl:"
+  博客内容会在简书和掘金同步，主要战场是简书和这个博客；一个小小的程序员，一个 iOS 菜鸟罢了；分享技术，分享经验，共同成长；
+  OpenGL、iOS
+keyword: '半纸渊, 黄文飞，半纸渊的独立博客, 半纸渊的博客, iOS, iOS 开发, iOS 博客, Objective-c, Swift, OpenGL ES, 设计'
+permalink: ':categories/:year/:month/:day/:title'
+baseurl: # the subpath of your site, e.g. /blog 如果布局在 github pages 上还是不用的好
+url: "http://banzzyuan.com" # the base hostname & protocol for your site, e.g. http://example.com
+
+header-title: Just Keep Learning !
+header-description:
+  p0: 博客内容会在简书和掘金同步，主要战场是简书和这个博客；
+  p1: 一个小小的程序员，一个 iOS 菜鸟罢了；
+  p2: 分享技术，分享经验，共同成长；
+
+nav-links:
+ - name:         首页
+   url:          /
+   external:     false
+ - name:         编程
+   url:          /blogs/coding
+   external:     true
+   sub-links:
+    - name:       OpenGL
+      url:        /OpenGL
+      external:   false
+    - name:       iOS
+      url:        /iOS
+      external:   true
+      sub-sub-links:
+       - name:       AVFoundation
+         url:        /AVFoundation
+         external:   false
+       - name:       Objective-C
+         url:        /Objective_C
+         external:   false
+       # - name:       Swift
+       #   url:        /Swift
+       #   external:   false
+       - name:       Networking
+         url:        /Networking
+         external:   false
+       - name:       Others
+         url:        /Others
+         external:   false
+    # - name:       Web
+    #   url:        /Web
+    #   external:   false
+    - name:       算法与数据结构
+      url:        /Algorithm_Datastructure
+      external:   true
+      sub-sub-links:
+       - name:       算法
+         url:        /Algorithm
+         external:   false
+       - name:       数据结构
+         url:        /Datastructure
+         external:   false
+ # - name:         设计
+ #   url:          /blogs/design
+ #   external:     false
+ # - name:         绘画
+ #   url:          /blogs/painting
+ #   external:     false
+ # - name:         生活
+ #   url:          /blogs/life
+ #   external:     false
+ - name:         搜索
+   url:          /blogs/search
+   external:     false
+ - name:         TAGS
+   url:          /blogs/tags
+   external:     false
+
+author: 黄文飞
+
+social-contact:
+ xinlangweibo: https://weibo.com/VFyiyuanzi
+ jianshu: http://www.jianshu.com/u/aabb5379ab8d
+ juejin: https://juejin.im/user/5a326e815188253da72e79fd
+ github: http://github.com/huangwenfei
+ youxiang: mailto:yi.yuan.zi@163.com
+
+social-share: true
+
+# social-comments
+disqus: false
+disqus_shortName: ban-zhi-yuan
+
+# 来必力
+livere: true
+livere_uid: MTAyMC8zMzE5MS85NzQ4
+
+# analytic
+baidu-analytic: true
+google-analytic: true
+
+# Build settings
+markdown: kramdown
+kramdown:
+ input: GFM
+ math_engine: mathjax
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-toc # github-page 不支持
+
+paginate: 6
+paginate_path: 'main/page:num'
+
+paginate_vfpage_path: 'collection/page:num'
+
+exclude: ['node_modules', 'dev', 'package.json', 'gulpfile.js', '.gitignore', 'README.md']

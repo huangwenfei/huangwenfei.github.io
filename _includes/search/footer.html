@@ -1,0 +1,31 @@
+
+<footer>
+  <!-- Script pointing to jekyll-search.js -->
+  <script src="{{ "assets/thirdparts/search/simple-jekyll-search.min.js" | relative_url }}"></script>
+
+  <!-- TODO: json 的问题， 导致 search.js 进行 init -->
+  <!-- FIXME: 改用 simple-jekyll-search.js example 里面的 json 数据 才可以正常 init -->
+  <script>
+      SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '{{ "blogs/search/search.json" | relative_url }}',
+        searchResultTemplate: '  <section class="search-cell">'+
+                              '    <div class="cover" style="background: url(\'{cover_url}\') center no-repeat; background-size: cover;">'+
+                              '      <a href="{url}"></a>'+
+                              '    </div>'+
+                              '    <div class="content">'+
+                              '      <a href="{url}"><h2>{title}</h2></a>'+
+                              '      <span>{date}</span>'+
+                              '      <p>{content}</p>'+
+                              '    </div>'+
+                              '  </section>',
+        noResultsText: '<div class="noresult-container">'+
+                       '  <p class="noresult">啊哦! 没有找到哦!</p>'+
+                       '</div>',
+        limit: 10,
+        fuzzy: true,
+        exclude: ['Welcome']
+      })
+  </script>
+</footer>

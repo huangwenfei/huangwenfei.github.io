@@ -1,0 +1,45 @@
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="author"  content="{{ site.author }}">
+  <meta name="description" content="{{ site.description }}">
+  <meta name="keywords"  content="{{ site.keyword }}">
+
+  <!-- 网址左边小图标 favicon.ico -->
+  <!-- 根目录可行 -->
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen"  /> -->
+  <!-- 非根目录 -->
+  {% assign favicon_url = "/assets/images/mainheader/favicon.ico" | relative_url  %}
+  <link rel="icon" href="{{ favicon_url }}" mce_href="{{ favicon_url }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ favicon_url }}" mce_href="{{ favicon_url }}" type="image/x-icon">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+
+  <script src="{{ "assets/thirdparts/jquery/jquery.min.js" | relative_url }}"></script>
+  <script src="{{ "assets/thirdparts/dropotron/jquery.dropotron.min.js" | relative_url }}"></script>
+  <script src="{{ "assets/thirdparts/skel/skel.js" | relative_url }}"></script>
+  <script src="{{ "assets/thirdparts/skel/skel-layout.js" | relative_url }}"></script>
+  <script src="{{ "assets/thirdparts/skel/skel-viewport.js" | relative_url }}"></script>
+  <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+
+  <!-- 由于 app.js and util.js 要用到上面的 *.js 文件，所以要放在最后面 -->
+  <script src="{{ "assets/js/app.js" | relative_url }}"></script>
+  <script src="{{ "assets/js/util.js" | relative_url }}"></script>
+  <script src="{{ "assets/js/colors.js" | relative_url }}"></script>
+
+  {% unless offScrolltop == true %}
+    <script src="{{ "assets/js/scrolltop.js" | relative_url }}"></script>
+  {% endunless %}
+  {% unless offMenu == true %}
+    <script src="{{ "assets/js/menu.js" | relative_url }}"></script>
+  {% endunless %}
+
+  <!-- 由于 app.css 可能要用到上面的 *.css 文件，所以最好放在最后面 -->
+  <link rel="stylesheet" href="{{ "assets/css/app.css" | relative_url }}">

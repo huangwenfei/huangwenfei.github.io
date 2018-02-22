@@ -1,0 +1,13 @@
+<!-- Inner -->
+  <div class="inner">
+    <div class="inner-inner">
+      <p id="skel-header-title">{{ site.header-title }}</p>
+      <ol class="descriptions">
+      {% for i in site.header-description %}
+        <li>{{ i[1] }}</li>
+      {% endfor %}
+      </ol>
+      {% include public/social.html %}
+      <a href="#top" class="start">开始阅读</a>
+    </div>
+  </div>

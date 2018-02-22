@@ -1,0 +1,67 @@
+
+  <div id="menu-fliter" style="background: url('{{ "assets/images/mainheader/header-fliter.png" | relative_url }}') center no-repeat; background-size: cover;"></div>
+
+  <div class="menu">
+
+    <!-- logo -->
+    <div class="menulogo">
+      <div class="m-logo">
+        <a href="{{ "/" | relative_url }}">
+          <img src="{{ site.menulogo | relative_url }}" alt="logo">
+        </a>
+      </div>
+      <div class="m-logotext">
+        <ol>
+          <li><a href="{{ "/" | relative_url }}">{{ site.menulogotext-max }}</a></li>
+          <li><a href="{{ "/" | relative_url }}">{{ site.menulogotext-min }}</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <nav id="menunav">
+
+      <!-- menunav -->
+
+      <ul class="top-list"> <!-- 第一层 -->
+        {% for item in site.nav-links %}
+          {% if item.external == true %}
+            {% if item.url == "/" %}
+              <li class="nav-nocurrent" ><a href="#">{{ item.name }}</a> <!-- 第二层 li start -->
+            {% else %}
+              <li class="nav-nocurrent" ><a href="#">{{ item.name }}</a> <!-- 第二层 li start -->
+            {% endif %}
+                <ul> <!-- 第二层 -->
+                {% for sub-item in item.sub-links %}
+                  {% if sub-item.external == true %}
+                    <li><a href="#">{{ sub-item.name }} &hellip;</a> <!-- 第三层 li start -->
+                      <ul> <!-- 第三层 -->
+                        {% for sub-sub-item in sub-item.sub-sub-links %}
+                          {% if sub-sub-item.external == true %}
+                            <li><a href="#">{{ sub-sub-item.name }} &hellip;</a> <!-- 第四层 li start -->
+                            <!-- 第四层 ul list -->
+                            </li> <!-- 第四层 li start -->
+                          {% else %}
+                            <li><a href="{{ sub-sub-item.url | prepend: sub-item.url | prepend: item.url | relative_url }}">{{ sub-sub-item.name }}</a></li>
+                          {% endif %}
+                        {% endfor %}
+                      </ul> <!-- 第三层 结束 -->
+                    </li> <!-- 第三层 li end -->
+                  {% else %}
+                    <li><a href="{{ sub-item.url | prepend: item.url | relative_url }}">{{ sub-item.name }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                </ul> <!-- 第二层 结束 -->
+              </li> <!-- 第二层 li end -->
+          {% else %}
+            {% if item.url == "/" %}
+              <li class="nav-nocurrent" ><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
+            {% else %}
+              <li class="nav-nocurrent" ><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul> <!-- 第一层 结束 -->
+
+    </nav>
+
+  </div>

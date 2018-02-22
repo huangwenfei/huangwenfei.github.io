@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn" data-scribe-reduced-action-queue="true">
+
+  {% include main/head.html %}
+  {% include analytics/analytics.html %}
+
+  <body class="homepage">
+
+    <div id="homewrapper">
+
+      <!-- Header -->
+       <header id="homeheader" style="background-image: url('{{ "assets/images/mainheader/header.jpg" | relative_url }}');">
+
+         {% include main/header.html %}
+         {% include public/header.html %}
+
+       </header>
+
+      <main> {{ content }} </main>
+
+      {% include public/footer.html %}
+
+    </div>
+
+  </body>
+
+</html>

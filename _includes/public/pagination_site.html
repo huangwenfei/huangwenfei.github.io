@@ -1,0 +1,62 @@
+<!-- 分页链接 -->
+
+<!-- target from post_list,html -->
+
+{% if target.paginate_totalPages > 1 %}
+
+  <div class="pagination">
+
+    <ol class="page-links">
+      <!-- 首页 -->
+      <li class="num-start-end">
+        {% assign path = target.page_paths[0] %}
+        <a class="page-link" href="{{ path | relative_url | replace: '//', '/' }}" data-hover="首页">首页</a>
+      </li>
+
+      <!-- << -->
+      <li class="page-previous-next">
+        {% if target.page_previous_page_path %}
+          <a class="page-link" href="{{ target.page_previous_page_path | relative_url | replace: '//', '/' }}" data-hover="icon-previous-page"><i class="iconfont icon-previous-page"></i></a>
+        {% else %}
+          <span class="normal" data-hover="icon-previous-page"><i class="iconfont icon-previous-page"></i></span>
+        {% endif %}
+      </li>
+      <!-- page:num -->
+      <li class="page-center">
+        {% for page in target.page_nums %}
+          {% assign index = page | minus: 1 %}
+          {% if page == target.paginate_current_page %}
+            <span class="current">{{ page }}</span>
+          {% else %}
+            {% assign path = target.page_paths[index] %}
+            <a class="page-link" href="{{ path | relative_url | replace: '//', '/' }}" data-hover="{{page}}">{{ page }}</a>
+          {% endif %}
+        {% endfor %}
+      </li>
+      <!-- >> -->
+      <li class="page-previous-next">
+        {% if target.page_next_page_path %}
+          <a class="page-link" href="{{ target.page_next_page_path | relative_url | replace: '//', '/' }}" data-hover="icon-next-page"><i class="iconfont icon-next-page"></i></a>
+        {% else %}
+          <span class="normal" data-hover="icon-next-page"><i class="iconfont icon-next-page"></i></span>
+        {% endif %}
+      </li>
+
+      <!-- 末页 -->
+      <li class="num-start-end">
+        {% assign lastIndex = target.paginate_totalPages | minus: 1 %}
+        {% assign path = target.page_paths[ lastIndex ] %}
+        <a class="page-link" href="{{ path | relative_url | replace: '//', '/' }}" data-hover="末页">末页</a>
+      </li>
+
+      <li class="page-total">
+        第 <span class="page-number">{{target.paginate_current_page}}</span> 页
+          <span class="page-number">/</span>
+        共 <span class="page-number">{{target.paginate_totalPages}}</span> 页
+      </li>
+
+    </ol>
+
+  </div>
+
+{% endif %}

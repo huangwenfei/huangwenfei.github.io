@@ -1,0 +1,16 @@
+---
+layout: collected_post
+vfpage_paginate: 6
+vfpage_collection_tags: Others
+---
+
+<div class="post-collected-descriptions">
+  <!-- TODO: data 文件夹的文件读不出数据 -->
+  <!-- FIXME: ? -->
+  {% for blogs_hash in site.data.blogs %}
+    {% assign blog = blogs_hash[0] %}
+    <span>{{ blog.header_title }}</span>
+    <span>OpenGL、OpenGL ES 2.+ 3.+</span>
+    <p>OpenGL (Open Graphics Library), OpenGL ES (OpenGL for Embedded Systems)</p>
+  {% endfor %}
+</div>

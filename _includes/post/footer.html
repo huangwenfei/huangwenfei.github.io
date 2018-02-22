@@ -1,0 +1,74 @@
+
+<footer class="post-content-footer">
+
+  <section class="row">
+
+    {% assign havePrevious = page.previous.url != null %}
+    {% assign haveNext = page.next.url != null %}
+
+    {% if haveNext %}
+      <div class="6u 12u(mobile)">
+        <div class="box">
+          {% if page.next.box_cover %}
+            <div class="filter"></div>
+            <div class="cover" style="background: url('{{ page.next.box_cover | relative_url }}') center no-repeat; background-size: cover;"></div>
+            <!-- <img src="{{ page.next.box_cover | relative_url }}" alt=""> -->
+          {% endif %}
+          <a href="{{ page.next.url | relative_url }}" class="link"></a>
+          <section class="content">
+            <span class="title">{{ page.next.title }}</span>
+            <p>{{ page.next.excerpt | strip_html | strip_newlines | truncate: 150}}</p>
+          </section>
+        </div>
+      </div>
+      {% else %}
+        <div class="6u 12u(mobile)">
+          <div class="box">
+            <div class="filter"></div>
+            <img src="{{ "assets/images/post/post-none-next.png" | relative_url }}" alt="">
+            <section class="none">
+              <span class="no-title">前一篇</span>
+              <h2>返回首页查看更多...</h2>
+              <a class="link" href={{ "/" | relative_url }}></a>
+            </section>
+          </div>
+        </div>
+    {% endif %}
+
+    {% if havePrevious %}
+      <div class="6u 12u(mobile)">
+        <div class="box">
+          {% if page.previous.box_cover %}
+            <div class="filter"></div>
+            <div class="cover" style="background: url('{{ page.previous.box_cover | relative_url }}') center no-repeat; background-size: cover;"></div>
+            <!-- <img src="{{ page.previous.box_cover | relative_url }}" alt=""> -->
+          {% endif %}
+          <a href="{{ page.previous.url | relative_url }}" class="link"></a>
+          <section class="content">
+            <span class="title">{{ page.previous.title }}</span>
+            <p>{{ page.previous.excerpt | strip_html | strip_newlines | truncate: 150}}</p>
+          </section>
+        </div>
+      </div>
+    {% else %}
+      <div class="6u 12u(mobile)">
+        <div class="box">
+          <div class="filter"></div>
+          <img src="{{ "assets/images/post/post-none-pre.png" | relative_url }}" alt="">
+          <section class="none">
+            <span class="no-title">后一篇</span>
+            <h2>返回首页查看更多...</h2>
+            <a class="link" href={{ "/" | relative_url }}></a>
+          </section>
+        </div>
+      </div>
+    {% endif %}
+
+  </section>
+
+</footer>
+
+<!-- Scripts -->
+<script src="{{ "assets/js/toc.js" | relative_url }}" ></script>
+<script src="{{ "assets/js/wheel.js" | relative_url }}" ></script>
+<script src="{{ "assets/js/post.js" | relative_url }}" ></script>
