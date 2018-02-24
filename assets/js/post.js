@@ -63,6 +63,16 @@ $(function() {
     }
   };
 
+  $('#toc-content').toc({
+    'selectors': 'h1,h2,h3,h4,h5,h6', //elements to use as headings
+    'container': '.markdown-body', //element to find all selectors in
+    'smoothScrolling': true, //enable or disable smooth scrolling on click
+    'prefix': 'toc', //prefix for anchor tags and class names
+    'onHighlight': function(el) { }, //called when a new section is highlighted
+    'highlightOnScroll': true, //add class to heading that is currently in focus
+    'highlightOffset': 0, //offset to trigger the next headline,
+  });
+
   // Off-Canvas Menu.
 
     // Toc Bar.
@@ -78,7 +88,7 @@ $(function() {
       $(
         '<div id="tocPanel">' +
           '<nav>' +
-            $('#tocNav').navList() +
+            $('#toc-content').navList() +
           '</nav>' +
         '</div>'
       )
@@ -94,20 +104,12 @@ $(function() {
           visibleClass: 'tocPanel-visible'
         });
 
-    // Fix: Remove tocPanel transitions on WP<10 (poor/buggy performance).
-      if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
-        $('#tocBar, #tocPanel, #page-wrapper')
-          .css('transition', 'none');
+  console.log($('#toc-content').html());
 
-  $('#toc-content').toc({
-    'selectors': 'h1,h2,h3,h4,h5,h6', //elements to use as headings
-    'container': '.markdown-body', //element to find all selectors in
-    'smoothScrolling': true, //enable or disable smooth scrolling on click
-    'prefix': 'toc', //prefix for anchor tags and class names
-    'onHighlight': function(el) { }, //called when a new section is highlighted
-    'highlightOnScroll': true, //add class to heading that is currently in focus
-    'highlightOffset': 0, //offset to trigger the next headline,
-  });
+  // Fix: Remove tocPanel transitions on WP<10 (poor/buggy performance).
+    if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
+      $('#tocBar, #tocPanel, #page-wrapper')
+        .css('transition', 'none');
 
   // scroll
 
@@ -154,9 +156,9 @@ $(function() {
 
   function tocOff(none) {
     if (none == true) {
-      $('#tocNav').css('display', 'none');
+      $('#toc-content').css('display', 'none');
     } else {
-      $('#tocNav').css('display', 'block');
+      $('#toc-content').css('display', 'block');
     }
   }
 
@@ -164,7 +166,7 @@ $(function() {
   function tocWheel() {
     scrollShowAndHide(scrollShow(function() {
       $(".h-slideBar").css({ display: "block", });
-      wheel.createListener("#tocNav", "#toc-content", ".h-slideBar", ".h-space", 80);
+      wheel.createListener("#toc-content", "#toc-content", ".h-slideBar", ".h-space", 80);
     }), scrollHide(function() {
       $(".h-slideBar").css({ display: "none", });
       wheel.reset();
@@ -188,9 +190,9 @@ $(function() {
 
   function wheelPaddingRightOn(on) {
     if (on) {
-      $('#tocNav').css('padding-right', '20px');
+      $('#toc-content').css('padding-right', '20px');
     } else {
-      $('#tocNav').css('padding-right', '10px');
+      $('#toc-content').css('padding-right', '10px');
     }
   }
 
