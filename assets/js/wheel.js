@@ -142,6 +142,13 @@ var wheel = (function() { "use strict"; var _ = {
    */
   createListener: function(parentBox, contentBox, sliderBar, sliderBarSpace, contentOffset) {
 
+    if ($(parentBox).css('display') == 'none') {
+      _.isWheelShow = false;
+      return;
+    } else {
+      _.isWheelShow = true;
+    }
+
     _.contentObject = $(contentBox);
     _.sliderThumbObject = $(sliderBar + " " + sliderBarSpace);
 
@@ -152,7 +159,7 @@ var wheel = (function() { "use strict"; var _ = {
   	var distance = 0,
         previousDistance = distance;
 
-    if (content_Height <= box_Height) {
+    if (content_Height <= box_Height || $(contentBox).css('display') == 'none') {
       _.isWheelShow = false;
       $(sliderBar).css('display', 'none');
       return;
@@ -170,6 +177,7 @@ var wheel = (function() { "use strict"; var _ = {
 
   	function down(event) {
   		isMouseDown = true;
+      $('body').css('user-select', 'none');
   	}
 
   	function move(event) {
@@ -182,6 +190,7 @@ var wheel = (function() { "use strict"; var _ = {
 
   	function up() {
   		isMouseDown = false;
+      $('body').css('user-select', 'auto');
   	}
 
     $(parentBox).on({

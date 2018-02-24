@@ -3944,10 +3944,7 @@ section, article {
   padding-right: 10px;
   padding-top: 0;
   padding-bottom: 20px;
-  overflow: hidden;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none; }
+  overflow: hidden; }
   .toc-menu #toc-content {
     margin-bottom: 20px; }
   .toc-menu #toc-content h1 {
@@ -3968,7 +3965,8 @@ section, article {
     top: 1%;
     right: 1%;
     border-radius: 5px;
-    overflow: hidden; }
+    overflow: hidden;
+    cursor: default; }
     .toc-menu .h-slideBar .h-space {
       height: 20px;
       width: 100%;
@@ -3976,7 +3974,8 @@ section, article {
       left: 0;
       position: absolute;
       display: block;
-      background: #06000d; }
+      background: #C20499;
+      cursor: default; }
 
 #toc-content .section-nav .toc-entry {
   font-size: 16px;
