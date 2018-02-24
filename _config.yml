@@ -11,6 +11,8 @@ permalink: ':categories/:year/:month/:day/:title'
 baseurl: # the subpath of your site, e.g. /blog 如果布局在 github pages 上还是不用的好
 url: "http://banzzyuan.com" # the base hostname & protocol for your site, e.g. http://example.com
 
+github-page: true
+
 header-title: Just Keep Learning !
 header-description:
   p0: 博客内容会在简书和掘金同步，主要战场是简书和这个博客；
@@ -108,7 +110,7 @@ kramdown:
 plugins:
   - jekyll-feed
   - jekyll-paginate
-  - jekyll-toc # github-page 不支持
+  # - jekyll-toc # github-page 不支持
 
 paginate: 6
 paginate_path: 'main/page:num'
