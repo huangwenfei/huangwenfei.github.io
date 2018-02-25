@@ -99,6 +99,7 @@ $.fn.toc = function(options) {
 
       $('li', self).removeClass(activeClassName);
       highlighted = $('li:eq('+ index +')', self).addClass(activeClassName);
+      // console.log(highlighted.html());
       opts.onHighlight(highlighted);
     }, 50);
   };
@@ -219,7 +220,7 @@ $.fn.toc = function(options) {
       .text(opts.headerText(idx, heading, $h))
       .attr('href', '#' + anchorName)
       .on('click', function(e) {
-        console.log(e);
+        // console.log(e);
         $(window).off('scroll', highlightOnScroll);
         _scrollTo(e, function() {
           $(window).on('scroll', highlightOnScroll);

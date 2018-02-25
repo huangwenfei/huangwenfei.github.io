@@ -3990,8 +3990,6 @@ section, article {
     display: inline-block;
     color: #F4F1F9;
     text-decoration: none; }
-    #toc-content .section-nav .toc-entry a:hover, #toc-content .section-nav .toc-entry a:active {
-      color: #eb1579; }
 #toc-content .section-nav .toc-h1 {
   border-radius: 5px;
   font-size: 27px;

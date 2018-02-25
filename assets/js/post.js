@@ -68,7 +68,7 @@ $(function() {
     'container': '.markdown-body', //element to find all selectors in
     'smoothScrolling': true, //enable or disable smooth scrolling on click
     'prefix': 'toc', //prefix for anchor tags and class names
-    'onHighlight': function(el) { }, //called when a new section is highlighted
+    'onHighlight': function(el) { console.log(el.parent().html()); }, //called when a new section is highlighted
     'highlightOnScroll': true, //add class to heading that is currently in focus
     'highlightOffset': 0, //offset to trigger the next headline,
   });
@@ -104,7 +104,7 @@ $(function() {
           visibleClass: 'tocPanel-visible'
         });
 
-  console.log($('#toc-content').html());
+  // console.log($('#toc-content').html());
 
   // Fix: Remove tocPanel transitions on WP<10 (poor/buggy performance).
     if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
@@ -166,7 +166,7 @@ $(function() {
   function tocWheel() {
     scrollShowAndHide(scrollShow(function() {
       $(".h-slideBar").css({ display: "block", });
-      wheel.createListener("#toc-content", "#toc-content", ".h-slideBar", ".h-space", 80);
+      wheel.createListener("#tocNav", "#toc-content", ".h-slideBar", ".h-space", 80);
     }), scrollHide(function() {
       $(".h-slideBar").css({ display: "none", });
       wheel.reset();
@@ -190,9 +190,9 @@ $(function() {
 
   function wheelPaddingRightOn(on) {
     if (on) {
-      $('#toc-content').css('padding-right', '20px');
+      $('#tocNav').css('padding-right', '20px');
     } else {
-      $('#toc-content').css('padding-right', '10px');
+      $('#tocNav').css('padding-right', '10px');
     }
   }
 
@@ -200,12 +200,14 @@ $(function() {
     scrollShowAndHide(function() { wheelPaddingRightOn(true); }, function() { wheelPaddingRightOn(false); });
   };
 
-  function delay(func, mils) { setTimeout(func, mils); }
+  function delay(func, mils) { setTimeout(func(), mils); }
 
   tocMenu();
   fixToc();
-  tocWheel();
-  fixWheel();
+  delay(function() {
+    tocWheel();
+    fixWheel();
+  }, 50);
 
   $(window).scroll(function() {
 

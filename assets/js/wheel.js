@@ -175,6 +175,11 @@ var wheel = (function() { "use strict"; var _ = {
   	$(window).mousemove(move);
   	$(window).mouseup(up);
 
+    // console.log(box_Height);
+    // console.log(content_Height);
+    // console.log(bar_Height);
+    // console.log(n);
+
   	function down(event) {
   		isMouseDown = true;
       $('body').css('user-select', 'none');
