@@ -184,15 +184,19 @@ $(function() {
     skel.on("+mobile +narrower +narrow", function() {
       tocOff(true);
     }).on("-narrow", function() {
-      tocOff(false);
+      if (scrollBarOffset >= post_footer_top_h) {
+        tocOff(true);
+      } else {
+        tocOff(false);
+      }
     });
   };
 
   function wheelPaddingRightOn(on) {
     if (on) {
-      $('#tocNav').css('padding-right', '20px');
+      $('#toc-content').css('padding-right', '20px');
     } else {
-      $('#tocNav').css('padding-right', '10px');
+      $('#toc-content').css('padding-right', '10px');
     }
   }
 
