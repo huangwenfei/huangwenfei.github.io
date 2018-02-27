@@ -68,7 +68,7 @@ $(function() {
     'container': '.markdown-body', //element to find all selectors in
     'smoothScrolling': true, //enable or disable smooth scrolling on click
     'prefix': 'toc', //prefix for anchor tags and class names
-    'onHighlight': function(el) { console.log(el.parent().html()); }, //called when a new section is highlighted
+    'onHighlight': function(el) {  }, //called when a new section is highlighted
     'highlightOnScroll': true, //add class to heading that is currently in focus
     'highlightOffset': 0, //offset to trigger the next headline,
   });
@@ -156,9 +156,9 @@ $(function() {
 
   function tocOff(none) {
     if (none == true) {
-      $('#toc-content').css('display', 'none');
+      $('#tocNav').css('display', 'none');
     } else {
-      $('#toc-content').css('display', 'block');
+      $('#tocNav').css('display', 'block');
     }
   }
 
@@ -197,7 +197,8 @@ $(function() {
   }
 
   function fixWheel() {
-    scrollShowAndHide(function() { wheelPaddingRightOn(true); }, function() { wheelPaddingRightOn(false); });
+    if (wheel.isWheelShow) { wheelPaddingRightOn(true); }
+    scrollShowAndHide(function() { }, function() { wheelPaddingRightOn(false); });
   };
 
   function delay(func, mils) { setTimeout(func(), mils); }
