@@ -9,7 +9,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 keyword: '半纸渊, 黄文飞，半纸渊的独立博客, 半纸渊的博客, iOS, iOS 开发, iOS 博客, Objective-c, Swift, OpenGL ES, 设计'
 permalink: ':categories/:year/:month/:day/:title'
 baseurl: # the subpath of your site, e.g. /blog 如果布局在 github pages 上还是不用的好
-url: "http://banzzyuan.com" # the base hostname & protocol for your site, e.g. http://example.com
+#url: "http://banzzyuan.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 github-page: true
 
