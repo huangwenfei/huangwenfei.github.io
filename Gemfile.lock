@@ -177,8 +177,6 @@ GEM
       jekyll-seo-tag (~> 2.0)
     jekyll-titles-from-headings (0.5.0)
       jekyll (~> 3.3)
-    jekyll-toc (0.5.2)
-      nokogiri (~> 1.6)
     jekyll-watch (1.5.1)
       listen (~> 3.0)
     jemoji (0.8.1)
@@ -211,7 +209,7 @@ GEM
     rouge (2.2.1)
     ruby-enum (0.7.1)
       i18n
-    rubyzip (1.2.1)
+    rubyzip (2.0.0)
     safe_yaml (1.0.4)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
@@ -235,10 +233,8 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  jekyll (~> 3.6.2)
   jekyll-feed (~> 0.6)
   jekyll-paginate
-  jekyll-toc
   tzinfo-data
 
 BUNDLED WITH
