@@ -12,6 +12,7 @@ baseurl: # the subpath of your site, e.g. /blog 如果布局在 github pages 上
 #url: "http://banzzyuan.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 github-page: true
+repository: huangwenfei/huangwenfei.github.io
 
 header-title: Just Keep Learning !
 header-description:
